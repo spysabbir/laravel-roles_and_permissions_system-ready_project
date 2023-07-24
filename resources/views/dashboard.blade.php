@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     <a href="{{ route('permission.index') }}">Permission All</a>
+                    <a href="{{ route('role.index') }}">Role All</a>
                 </div>
             </div>
         </div>
