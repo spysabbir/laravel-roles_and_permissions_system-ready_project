@@ -10,8 +10,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    <br>
                     <a href="{{ route('permission.index') }}">Permission All</a>
+                    <br>
                     <a href="{{ route('role.index') }}">Role All</a>
+                    <br>
+                    <a href="{{ route('assign.role.permission') }}">Assign Role Permission</a>
                 </div>
             </div>
         </div>

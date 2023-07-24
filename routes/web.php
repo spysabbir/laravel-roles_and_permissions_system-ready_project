@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Admin\PermissionController;
 use App\Http\Controllers\Backend\Admin\RoleController;
 use App\Http\Controllers\ProfileController;
@@ -35,3 +36,8 @@ require __DIR__.'/auth.php';
 Route::resource('permission', PermissionController::class);
 
 Route::resource('role', RoleController::class);
+
+Route::get('/assign/role/permission', [AdminController::class, 'AssignRolePermission'])->name('assign.role.permission');
+Route::post('/assign/role/permission', [AdminController::class, 'AssignRolePermissionStore'])->name('assign.role.permission.store');
+Route::get('/edit/role/permission/{id}', [AdminController::class, 'EditRolePermission'])->name('edit.role.permission');
+Route::post('/edit/role/permission/{id}', [AdminController::class, 'UpdateRolePermission'])->name('edit.role.permission.update');
