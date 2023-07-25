@@ -16,6 +16,8 @@
                     <a href="{{ route('role.index') }}">Role All</a>
                     <br>
                     <a href="{{ route('assign.role.permission') }}">Assign Role Permission</a>
+
+                    <a href="{{ route('all.admin') }}">All Admin</a>
                 </div>
             </div>
         </div>
