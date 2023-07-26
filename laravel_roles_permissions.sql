@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2023 at 09:07 PM
+-- Generation Time: Jul 25, 2023 at 08:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -83,6 +83,14 @@ CREATE TABLE `model_has_roles` (
   `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 3),
+(2, 'App\\Models\\User', 2);
 
 -- --------------------------------------------------------
 
@@ -191,6 +199,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `role` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -204,8 +213,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Sabbir', 'admin@email.com', NULL, '$2y$10$bIyGmHkwDlIYnHJdGVz.2.UHURT/aTVj1sTQqkUqPjjjOFzrvRlRW', NULL, '2023-07-23 09:48:06', '2023-07-23 09:48:06');
+INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Admin Sabbir', 'admin@email.com', NULL, '$2y$10$bIyGmHkwDlIYnHJdGVz.2.UHURT/aTVj1sTQqkUqPjjjOFzrvRlRW', NULL, '2023-07-23 09:48:06', '2023-07-23 09:48:06'),
+(2, 'Admin', 'Tamara Herman', 'pufawu@mailinator.com', NULL, '$2y$10$UVwKLnn7i7/AF27OeAUJSut9JpyT5DiCe.MSqZwWQQO69OEftZmsi', NULL, '2023-07-25 10:24:56', '2023-07-25 10:24:56'),
+(3, 'Admin', 'Chava Leblanc', 'mosu@mailinator.com', NULL, '$2y$10$Mgu5rlcqXvNnoMp1pgGoiunijjYFYyzhI4.3llRwgEJbA2D8VgLO2', NULL, '2023-07-25 11:14:04', '2023-07-25 11:46:17');
 
 --
 -- Indexes for dumped tables
@@ -318,7 +329,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
