@@ -18,6 +18,19 @@
                     <a href="{{ route('assign.role.permission') }}">Assign Role Permission</a>
 
                     <a href="{{ route('all.admin') }}">All Admin</a>
+
+                    @if (Auth::user()->can('default.setting'))
+                    <a href="{{ route('all.admin') }}">default.setting</a>
+                    @endif
+
+                    @if (Auth::user()->can('mail.setting'))
+                    <a href="{{ route('all.admin') }}">mail.setting</a>
+                    @endif
+
+                    @if (Auth::user()->can('sms.setting'))
+                    <a href="{{ route('all.admin') }}">sms.setting</a>
+                    @endif
+
                 </div>
             </div>
         </div>
