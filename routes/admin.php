@@ -26,16 +26,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        Route::resource('role', RoleController::class);
+        Route::resource('role', RoleController::class)->middleware(['permission:role']);
 
-        Route::resource('permission', PermissionController::class);
+        Route::resource('permission', PermissionController::class)->middleware(['permission:permission']);
 
-        Route::resource('role-permission', RolePermissionController::class);
+        Route::resource('role-permission', RolePermissionController::class)->middleware(['permission:role.permission']);
 
-        Route::get('/all/admin', [AdminController::class, 'AllAdmin'])->name('all.admin');
-        Route::post('/admin/store', [AdminController::class, 'AdminStore'])->name('admin.store');
-        Route::get('/admin/edit/{id}', [AdminController::class, 'AdminEdit'])->name('admin.edit');
-        Route::post('/admin/update/{id}', [AdminController::class, 'AdminUpdate'])->name('admin.update');
+        Route::get('/all/admin', [AdminController::class, 'AllAdmin'])->name('all.admin')->middleware(['permission:all.admin']);
+        Route::post('/admin/store', [AdminController::class, 'AdminStore'])->name('admin.store')->middleware(['permission:admin.store']);
+        Route::get('/admin/edit/{id}', [AdminController::class, 'AdminEdit'])->name('admin.edit')->middleware(['permission:admin.edit']);
+        Route::post('/admin/update/{id}', [AdminController::class, 'AdminUpdate'])->name('admin.update')->middleware(['permission:admin.update']);
     });
 
 });
